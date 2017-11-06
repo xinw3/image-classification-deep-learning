@@ -34,4 +34,5 @@ prod_to_category.index.name = '_id'
 prod_to_category.rename(columns={0: 'category_id'}, inplace=True)
 prod_to_category.head()
 
+print("show pictures")
 plt.imshow(picture);
