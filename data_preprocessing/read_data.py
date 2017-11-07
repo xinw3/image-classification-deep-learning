@@ -38,8 +38,6 @@ with open("training_example.txt","w") as training_file:
     for key in prod_to_category:
         training_file.write(str(key) + "\t" + str(prod_to_category[key]) + "\n")
 
-    # pickle.dump(prod_to_category, training_file)
-
 print(prod_to_category)
 
 plt.imshow(picture);
