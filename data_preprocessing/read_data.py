@@ -9,15 +9,15 @@ import bson                       # this is installed with the pymongo package
 import matplotlib.pyplot as plt
 from skimage.data import imread   # or, whatever image library you prefer
 import multiprocessing as mp      # will come in handy due to the size of the data
+import pickle
+
 # Input data files are available in the "../input/" directory.
 # For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
 
 from subprocess import check_output
-print(check_output(["ls", "../data"]).decode("utf8"))
-
 # Simple data processing
 
-data = bson.decode_file_iter(open('../data/train_example.bson', 'rb'))
+data = bson.decode_file_iter(open('./data/train_example.bson', 'rb'))
 
 prod_to_category = dict()
 
@@ -29,10 +29,17 @@ for c, d in enumerate(data):
         picture = imread(io.BytesIO(pic['picture']))
         # do something with the picture, etc
 
-prod_to_category = pd.DataFrame.from_dict(prod_to_category, orient='index')
-prod_to_category.index.name = '_id'
-prod_to_category.rename(columns={0: 'category_id'}, inplace=True)
-prod_to_category.head()
+# prod_to_category = pd.DataFrame.from_dict(prod_to_category, orient='index')
+# prod_to_category.index.name = '_id'
+# prod_to_category.rename(columns={0: 'category_id'}, inplace=True)
+# prod_to_category.head()
+print(prod_to_category)
+with open("training_example.txt","w") as training_file:
+    for key in prod_to_category:
+        training_file.write(str(key) + "\t" + str(prod_to_category[key]) + "\n")
 
-print("show pictures")
+    # pickle.dump(prod_to_category, training_file)
+
+print(prod_to_category)
+
 plt.imshow(picture);
