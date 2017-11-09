@@ -1,0 +1,6 @@
+**/*.pdf
+**/*.png
+**/*.txt
+**/data
+Kaggle-keras/__pycache__
+**/weights
