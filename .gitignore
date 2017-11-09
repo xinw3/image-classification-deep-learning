@@ -2,7 +2,6 @@
 **/*.png
 **/*.txt
 **/data
-**/*pyc
+**/*.pyc
 Kaggle-keras/weights
-**/*tar*
-**/*csv
+**/*.csv

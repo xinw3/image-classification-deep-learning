@@ -2,5 +2,7 @@
 **/*.png
 **/*.txt
 **/data
-Kaggle-keras/__pycache__
-**/weights
+**/*pyc
+Kaggle-keras/weights
+**/*tar*
+**/*csv
