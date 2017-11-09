@@ -1,8 +1,0 @@
-**/*.pdf
-**/*.png
-**/*.txt
-**/data
-**/*pyc
-Kaggle-keras/weights
-**/*tar*
-**/*csv
