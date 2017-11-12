@@ -4,7 +4,6 @@
 
 import os
 import bson                       # this is installed with the pymongo package
-import pickle
 # Input data files are available in the "../input/" directory.
 # For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
 
@@ -13,12 +12,14 @@ file_name = 'output.bson'
 
 data = bson.decode_file_iter(open('./data/train_example.bson', 'rb'))
 count = 0
-output_file = open('output.bson', 'ab')
+output_file = open('output.bson', 'wb')
 
-while count < 10:
-    for c, d in enumerate(data):
-        print(c,d)
-        # data_encoded = bson.BSON.encode(d)
-        # output_file.write(data_encoded)
+for c, d in enumerate(data):
+    if count > 10000:
+        break
     count += 1
+    # print(c,d)
+    data_encoded = bson.BSON.encode(d)
+    output_file.write(data_encoded)
+
 output_file.close()
