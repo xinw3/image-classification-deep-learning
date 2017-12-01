@@ -18,7 +18,7 @@ for c, d in enumerate(data):
     if count > 10000:
         break
     count += 1
-    # print(c,d)
+    print(c,d)
     data_encoded = bson.BSON.encode(d)
     output_file.write(data_encoded)
 
