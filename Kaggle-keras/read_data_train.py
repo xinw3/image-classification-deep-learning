@@ -4,7 +4,7 @@ from skimage.io import imread, imsave  # or, whatever image library you prefer
 import multiprocessing as mp  # will come in handy due to the size of the data
 import os
 import pandas as pd
-from tqdm import tqdm
+from tqdm import tqdm   # show progress bar
 
 import params
 

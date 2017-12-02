@@ -5,3 +5,4 @@
 **/*.pyc
 Kaggle-keras/weights
 **/*.csv
+**/*.bson
