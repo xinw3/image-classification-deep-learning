@@ -1,5 +1,7 @@
 import os
 import bson
+import argparse
+
 
 def find_min():
 
@@ -21,26 +23,34 @@ def find_min():
     print ("max count: " + str(max_val))
     print ("total count: " + str(sum_count))
 
-    return min_val
+    return min_val, category_dict
 
 def split_data(threshold):
     output_filename = 'output.bson'
     data = bson.decode_file_iter(open('./data/train_example.bson', 'rb'))
-    category_dict = dict()
+    example_count = dict()
     output_file = open(output_filename, 'wb')
 
     for c, d in enumerate(data):
         category_id = d['category_id']
-        category_dict[category_id] = category_dict.get(category_id,0) + 1
-        if category_dict[category_id] > threshold:
+        example_count[category_id] = example_count.get(category_id,0) + 1
+        if example_count[category_id] > threshold:
             continue
         data_encoded = bson.BSON.encode(d)
         output_file.write(data_encoded)
 
+    print ("write file to: " + output_filename)
 
 if __name__ == "__main__":
     # Default value for threshold
-    threshold = 1000
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--threshold', type=int, default=12, help='examples of each category')
+    parser.add_argument('--display_category', type=bool, default=False, help='show the distribution of categories')
+    args = parser.parse_args()
+
+    if args.display_category == True:
+        min_val, category_dict = find_min()
+
     # comment if have known the min_val 12
-    threshold = find_min()
-    split_data(threshold)
+    # threshold = find_min()
+    split_data(args.threshold)
