@@ -10,7 +10,7 @@ import params
 
 base_dir = params.base_dir
 
-bson_file = 'input/train_example.bson'
+bson_file = '~/707project/extracted_data/all_classes_train.bson'
 image_dir = 'train_images'
 image_path = os.path.join(base_dir, image_dir)
 bson_file_path = os.path.join(base_dir, bson_file)
