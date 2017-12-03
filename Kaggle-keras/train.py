@@ -16,7 +16,7 @@ from imgaug import augmenters as iaa
 from sklearn.model_selection import train_test_split
 from keras.utils.np_utils import to_categorical
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
-from keras.optimizers import RMSprop
+from keras.optimizers import RMSprop,SGD
 
 from models import Models
 import params
@@ -176,6 +176,7 @@ callbacks = [ModelCheckpoint(filepath='weights/best_weights_' + params.base_mode
                            patience=4,
                            verbose=1)]
 
+#sgd_optimizer = SGD()
 models.compile(optimizer=RMSprop(lr=1e-5))
 model = models.get_model()
 model.fit_generator(generator=train_generator(),

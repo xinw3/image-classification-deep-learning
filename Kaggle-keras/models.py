@@ -19,6 +19,8 @@ class Models:
         self.model.add(base_model)
         self.model.add(Flatten())
         self.model.add(Dense(self.classes, activation='softmax'))
+        for layer in self.model.layers[:10]:
+            layer.trainable = False
 
     def vgg19(self):
         base_model = VGG19(include_top=False, weights='imagenet',
