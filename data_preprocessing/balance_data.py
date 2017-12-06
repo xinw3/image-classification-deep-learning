@@ -6,7 +6,7 @@ import json
 
 def find_min():
 
-    input_filepath = './data/all_classes_train.bson'
+    input_filepath = '../data/all_classes_train.bson'
     data = bson.decode_file_iter(open(input_filepath, 'rb'))
     category_dict = dict()
     for c, d in enumerate(data):
@@ -19,7 +19,7 @@ def find_min():
     max_val = max(category_dict.values())
     sum_count = sum(category_dict.values())
 
-    print ("total category: " + str(len(category_dict)))
+    #print ("total category: " + str(len(category_dict)))
     print ("min count: " + str(min_val))
     print ("max count: " + str(max_val))
     print ("total count: " + str(sum_count))
