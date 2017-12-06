@@ -1,6 +1,7 @@
 import os
 import bson
 import argparse
+import json
 
 
 def find_min():
@@ -22,12 +23,14 @@ def find_min():
     print ("min count: " + str(min_val))
     print ("max count: " + str(max_val))
     print ("total count: " + str(sum_count))
+    with open("category_dict.json","w+") as dict_file:
+    	json.dump(category_dict, dict_file)
 
     return min_val, category_dict
 
 def split_data(threshold):
     output_filename = 'output.bson'
-    data = bson.decode_file_iter(open('./data/train_example.bson', 'rb'))
+    data = bson.decode_file_iter(open('../data/train_example.bson', 'rb'))
     example_count = dict()
     output_file = open(output_filename, 'wb')
 
