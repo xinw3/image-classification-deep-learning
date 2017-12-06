@@ -5,7 +5,7 @@ import argparse
 
 def find_min():
 
-    input_filepath = './data/train_example.bson'
+    input_filepath = './data/all_classes_train.bson'
     data = bson.decode_file_iter(open(input_filepath, 'rb'))
     category_dict = dict()
     for c, d in enumerate(data):
@@ -53,4 +53,5 @@ if __name__ == "__main__":
 
     # comment if have known the min_val 12
     # threshold = find_min()
-    split_data(args.threshold)
+    if hasattr(args, threshold):
+    	split_data(args.threshold)
