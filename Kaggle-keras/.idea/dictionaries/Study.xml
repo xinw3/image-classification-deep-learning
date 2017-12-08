@@ -2,6 +2,7 @@
   <dictionary name="Study">
     <words>
       <w>imagenet</w>
+      <w>keras</w>
     </words>
   </dictionary>
 </component>
