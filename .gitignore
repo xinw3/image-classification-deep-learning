@@ -6,3 +6,4 @@
 Kaggle-keras/weights
 **/*.csv
 **/*.bson
+./Kaggle-keras/input/
