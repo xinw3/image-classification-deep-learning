@@ -1,7 +1,7 @@
 # base_dir = '/Users/xinwang/Desktop/707_project/Kaggle-keras'  # Change to your base folder
-base_dir = '/home/xinw1994/707project/git_repo/Kaggle-keras'
-height = 180
-width = 180
-batch_size = 32
+base_dir = '/nfshome/xuanw1/707_project/Kaggle-keras'
+height = 197
+width = 197
+batch_size = 128
 max_epochs = 5
-base_model = 'vgg16'
+base_model = 'resnet50'

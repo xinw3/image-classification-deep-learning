@@ -3,6 +3,7 @@ from keras.applications.vgg16 import VGG16
 from keras.applications.vgg19 import VGG19
 from keras.applications.resnet50 import ResNet50
 from keras.applications.inception_v3 import InceptionV3
+from keras.applications.xception import Xception
 from keras.layers import Flatten, Dense, GlobalAveragePooling2D
 
 
@@ -12,11 +13,21 @@ class Models:
         self.classes = classes
         self.model = Sequential()
 
+    def xception(self):
+        base_model = Xception(include_top=False, weights='imagenet',
+                           input_shape=self.input_shape)
+
+        for layer in base_model.layers[:5]:
+            layer.trainable = False
+        self.model.add(base_model)
+        self.model.add(Flatten())
+        self.model.add(Dense(self.classes, activation='softmax'))
+
     def vgg16(self):
         base_model = VGG16(include_top=False, weights='imagenet',
                            input_shape=self.input_shape)
 
-        for layer in base_model.layers[:10]:
+        for layer in base_model.layers[:5]:
             layer.trainable = False
         self.model.add(base_model)
         self.model.add(Flatten())
@@ -34,6 +45,8 @@ class Models:
         base_model = ResNet50(include_top=False, weights='imagenet',
                               input_shape=self.input_shape)
 
+        for layer in base_model.layers[:5]:
+            layer.trainable = False
         self.model.add(base_model)
         self.model.add(Flatten())
         self.model.add(Dense(self.classes, activation='softmax'))

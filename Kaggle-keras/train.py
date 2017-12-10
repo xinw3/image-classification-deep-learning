@@ -177,7 +177,7 @@ callbacks = [ModelCheckpoint(filepath='weights/best_weights_' + params.base_mode
                            verbose=1)]
 
 #sgd_optimizer = SGD()
-models.compile(optimizer=RMSprop(lr=1e-5))
+models.compile(optimizer=SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True))
 model = models.get_model()
 model.fit_generator(generator=train_generator(),
                     steps_per_epoch=np.ceil(float(train_samples) / float(batch_size)),

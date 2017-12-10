@@ -10,7 +10,7 @@ import params
 
 base_dir = params.base_dir
 
-bson_file = '~/707project/extracted_data/all_classes_train.bson'
+bson_file = '/nfshome/xuanw1/707_project/Kaggle-keras/input/output_1000_5%.bson'
 image_dir = 'train_images'
 image_path = os.path.join(base_dir, image_dir)
 bson_file_path = os.path.join(base_dir, bson_file)
