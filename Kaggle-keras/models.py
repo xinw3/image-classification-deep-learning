@@ -17,8 +17,6 @@ class Models:
         base_model = Xception(include_top=False, weights='imagenet',
                            input_shape=self.input_shape)
 
-        for layer in base_model.layers[:5]:
-            layer.trainable = False
         self.model.add(base_model)
         self.model.add(Flatten())
         self.model.add(Dense(self.classes, activation='softmax'))

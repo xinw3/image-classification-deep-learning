@@ -161,6 +161,8 @@ elif params.base_model == 'resnet50':
     models.resnet50()
 elif params.base_model == 'inceptionV3':
     models.inceptionV3()
+elif params.base_model == 'xception':
+    models.xception()
 else:
     print('Uknown base model')
     raise SystemExit
